@@ -1,0 +1,18 @@
+@startuml
+annotation java.lang.Override
+class Entidades.Asiento
+class Entidades.Cine
+class Entidades.Espectador
+class Entidades.Pelicula
+class Servicio.Metodos
+class g11_ej_extra2.G11_Ej_Extra2
+class java.util.Scanner
+Entidades.Asiento ..> java.lang.Override
+Entidades.Espectador ..> java.lang.Override
+Entidades.Pelicula ..> java.lang.Override
+g11_ej_extra2.G11_Ej_Extra2 ..> Entidades.Cine
+g11_ej_extra2.G11_Ej_Extra2 ..> Entidades.Espectador
+g11_ej_extra2.G11_Ej_Extra2 ..> Entidades.Pelicula
+g11_ej_extra2.G11_Ej_Extra2 ..> Servicio.Metodos
+g11_ej_extra2.G11_Ej_Extra2 ..> java.util.Scanner
+@enduml

@@ -1,0 +1,83 @@
+//main
+
+public class JavaG09Ej04 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        FechaService fs = new FechaService();
+        
+        Date fecha = fs.fechaNacimiento();
+        System.out.println(fs.fechaActual());
+        System.out.println("La diferencia es de " + fs.diferencia(fecha) + " años.");
+    }
+    
+}
+
+//Service
+
+public class FechaService {
+    Scanner leer = new Scanner(System.in);
+    
+    public Date fechaNacimiento(){
+        
+        System.out.println("Ingrese año, mes y día de su nacimiento");
+        int anios = leer.nextInt() - 1900;
+        int mes = leer.nextInt() -1;
+        int dia = leer.nextInt();
+        Date nacimiento = new Date(anios, mes, dia);
+        
+        return nacimiento;
+    }
+    
+    public Date fechaActual(){
+        return new Date();
+    }
+    
+    public int diferencia(Date a){
+        Date fecha = new Date();
+        int diferencia = fecha.getYear() - a.getYear();
+        return diferencia;
+        
+    }
+}
+
+
+//Corregido main
+public static void main(String[] args) {
+        FechaService fs = new FechaService();
+        
+        Date nac = fs.fechaNacimiento();
+        System.out.println(nac);
+        Date act = fs.fechaActual();
+        System.out.println(act);
+        System.out.println("La diferencia es de: " + fs.diferencia(act, nac) + " años.");
+    }
+
+//Corregido service
+public class FechaService {
+    Scanner leer = new Scanner(System.in);
+    
+    public Date fechaNacimiento(){
+        
+        System.out.println("Ingrese año, mes y día de su nacimiento");
+        int anio = leer.nextInt() - 1900;
+        int mes = leer.nextInt() -1;
+        int dia = leer.nextInt();
+        Date nacimiento = new Date(anio, mes, dia);
+        
+        return nacimiento;
+    }
+    
+    public Date fechaActual(){
+        Date fechaActual = new Date();
+        return fechaActual;
+    }
+    
+    public int diferencia(Date fechaActual, Date nacimiento){
+        int diferencia = fechaActual.getYear() - nacimiento.getYear();
+        return diferencia;
+        
+    }
+}

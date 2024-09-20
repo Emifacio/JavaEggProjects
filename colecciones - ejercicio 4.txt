@@ -1,0 +1,150 @@
+MAIN
+
+SPelicula sP = new SPelicula();
+        
+        ArrayList<Pelicula> peliculas = sP.crearPelicula();
+        
+        //Mostrar peliculas
+        sP.mostrarPeliculas(peliculas);
+        
+        //Peliculas mayor a 1hr
+        System.out.println("Peliculas mayor a 1hr");
+        for(Pelicula peli : peliculas){
+            if(peli.getHoras()>1){
+                System.out.println(peli.getTitulo());
+            }
+        }
+        
+        //Ordenar peliculas de acuerdo a su duracion de mayor a menor
+        System.out.println("Peliculas ordenadas por duracion mayor a menor");
+        Collections.sort(peliculas, Comparadores.ordenarPorDuracionMayorAMenor);       
+        sP.mostrarPeliculas(peliculas);
+        
+         //Ordenar peliculas de acuerdo a su duracion de menor a mayor
+         System.out.println("Ordenar peliculas de acuerdo a su duracion de menor a mayor");
+        Collections.sort(peliculas, Comparadores.ordenarPorDuracionMenorAMayor);
+        sP.mostrarPeliculas(peliculas);
+     
+        //Ordenar peliculas alfaticamente de Z a A
+        System.out.println("Ordenar peliculas alfaticamente de Z a A");
+        Collections.sort(peliculas, Comparadores.ordenarAlfabeticamentePorTituloZa);
+        sP.mostrarPeliculas(peliculas);
+        //Ordenar peliculas alfaticamente de A a Z
+        System.out.println("Ordenar peliculas alfaticamente de A a Z");
+        Collections.sort(peliculas, Comparadores.ordenarAlfabeticamentePorTituloAz);
+        sP.mostrarPeliculas(peliculas);
+        
+        
+    }
+    
+}
+-----------------------------------------------------------
+
+SPeliculas
+ Pelicula peli;
+       
+    public ArrayList<Pelicula> crearPelicula(){
+        boolean rto = true;
+        ArrayList<Pelicula> peliculas = new ArrayList();
+        
+        do {
+        Scanner leer = new Scanner(System.in);
+        
+        System.out.println("Ingrese titulo de la pelicula");
+        String titulo = leer.next();
+        System.out.println("Ingrese el director de la pelicula");
+        String director = leer.next();
+        System.out.println("Ingrese la duracion en horas de la pelicula");
+        int dur = leer.nextInt();
+        
+        Pelicula p = new Pelicula(titulo, director, dur);
+        
+        peliculas.add(p);
+        
+            System.out.println("Desea agregar otra pelicula? Si o No");
+        String aux = leer.next();
+        if(aux.equals("No")){
+            rto=false;
+        }    
+        
+        } while (rto);
+        
+        return peliculas;
+    }
+    
+    public void mostrarPeliculas(ArrayList<Pelicula> peliculas) {
+             
+        for (Pelicula peli : peliculas) {
+            System.out.println(peli.getTitulo() + " " + peli.getDirector() +" " + peli.getHoras());      
+        }
+    }   
+    
+}
+-----------------------------------------------------------
+Pelicula
+private String titulo;
+    private String director;
+    private Integer horas;
+
+    public Pelicula() {
+    }
+
+    public Pelicula(String titulo, String director, Integer horas) {
+        this.titulo = titulo;
+        this.director = director;
+        this.horas = horas;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDirector() {
+        return director;
+    }
+
+    public void setDirector(String director) {
+        this.director = director;
+    }
+
+    public Integer getHoras() {
+        return horas;
+    }
+
+    public void setHoras(Integer horas) {
+        this.horas = horas;
+    }
+
+------------------------------------------------------
+Comparadores
+public static Comparator<Pelicula> ordenarPorDuracionMayorAMenor = new Comparator <Pelicula> () {
+        @Override
+        public int compare(Pelicula o1, Pelicula o2) {
+            return o2.getHoras().compareTo(o1.getHoras());
+        }
+    };
+    
+    public static Comparator<Pelicula> ordenarPorDuracionMenorAMayor = new Comparator <Pelicula> () {
+        @Override
+        public int compare(Pelicula o1, Pelicula o2) {
+            return o1.getHoras().compareTo(o2.getHoras());
+        }
+    };
+    
+    public static Comparator<Pelicula> ordenarAlfabeticamentePorTituloZa = new Comparator <Pelicula> () {
+        @Override
+        public int compare(Pelicula o1, Pelicula o2) {
+            return o2.getTitulo().compareTo(o1.getTitulo());
+        }
+    };
+    
+    public static Comparator<Pelicula> ordenarAlfabeticamentePorTituloAz = new Comparator <Pelicula> () {
+        @Override
+        public int compare(Pelicula o1, Pelicula o2) {
+            return o1.getTitulo().compareTo(o2.getTitulo());
+        }
+    };
