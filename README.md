@@ -18,4 +18,4 @@
     <li>Exposure to real-world software development scenarios</li>
 </ul>
 
-<p>This repository serves as a testame
+<p>This repository serves as a testament to the power of collaborative learning in mastering Java programming. It's an excellent resource for Java learners and a showcase of evolving coding skills in a team environment.</p>
